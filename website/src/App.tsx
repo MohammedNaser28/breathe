@@ -951,8 +951,8 @@ function App() {
                 <h3>Windows 10/11 x64</h3>
                 <p>
                   WebView2 Evergreen Runtime. The installer can fetch it when
-                  missing. Reminders use Breathe&apos;s own popup, so Windows
-                  notification settings do not hide them.
+                  missing. Notification permissions and Focus Assist can suppress
+                  reminders.
                 </p>
               </article>
               <article className="requirement-card">
@@ -968,9 +968,9 @@ function App() {
                 <Package aria-hidden="true" />
                 <h3>Fedora / RPM</h3>
                 <p>
-                  Fedora 44 is the oldest tested release. Reminders use Breathe&apos;s
-                  own popup; a StatusNotifier host is needed for the tray. The RPM
-                  resolves GTK, WebKitGTK, librsvg and libappindicator.
+                  Fedora 44 is the oldest tested release. A notification daemon and
+                  a StatusNotifier host are needed for reminders and the tray. The
+                  RPM resolves GTK, WebKitGTK, librsvg and libappindicator.
                 </p>
               </article>
               <article className="requirement-card">

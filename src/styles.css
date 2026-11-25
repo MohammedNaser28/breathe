@@ -195,18 +195,14 @@
 }
 
 @layer utilities {
-  .drag-region {
-    -webkit-app-region: drag;
-  }
-
-  /* Children of a drag region must not swallow the pointer event, otherwise
-     Tauri's drag-region hit test misses them. */
+  /* The title bar carries Tauri's `data-tauri-drag-region` attribute. Children
+     must not swallow the pointer event, otherwise Tauri's drag-region hit test
+     sees the child instead of the header. */
   .drag-region > * {
     pointer-events: none;
   }
 
   .no-drag {
-    -webkit-app-region: no-drag;
     pointer-events: auto;
   }
 

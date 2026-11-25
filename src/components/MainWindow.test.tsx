@@ -216,4 +216,16 @@ describe("<MainWindow />", () => {
     );
     expect(handlers.onHide).toHaveBeenCalledTimes(1);
   });
+
+  it("makes the frameless title bar a native drag region", () => {
+    const { container } = render(
+      <MainWindow settings={settings} snapshot={snapshot()} actions={actions()} />,
+    );
+
+    // macOS WKWebView ignores `-webkit-app-region`, so the Tauri attribute is
+    // what actually starts a window drag there.
+    expect(
+      container.querySelector("header")?.getAttribute("data-tauri-drag-region"),
+    ).toBe("true");
+  });
 });

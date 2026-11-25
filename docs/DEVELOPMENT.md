@@ -231,6 +231,10 @@ wire format do not change.
 - `scripts/check-version.mjs` checks `package.json`,
   `package-lock.json`, `src-tauri/tauri.conf.json` and the `[package]` version
   in `src-tauri/Cargo.toml`. It optionally checks a release tag.
+- `scripts/check-icons.mjs` checks that every configured PNG icon is 8-bit
+  RGBA. Tauri's compile-time PNG reader copies 16-bit samples unchanged but
+  tells tao they are 8-bit RGBA, so a 16-bit icon makes the app panic during
+  setup (`invalid icon: The specified dimensions … don't match …`).
 - `scripts/render-aur.mjs` renders the release copy of the AUR files with the
   real SHA-256 of the generated source tarball. The repository copy uses
   `sha256sums=('SKIP')` until a release exists.

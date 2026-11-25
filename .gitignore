@@ -4,10 +4,23 @@ dist/
 dist-ssr/
 website/dist/
 *.local
+*.tsbuildinfo
+coverage/
+.eslintcache
 
 # Rust
 src-tauri/target/
 src-tauri/gen/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Local tooling state
+.freebuff/
 
 # Editor / OS
 .DS_Store

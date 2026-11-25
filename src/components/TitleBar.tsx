@@ -37,9 +37,11 @@ interface TitleBarProps {
 }
 
 /**
- * Frameless windows need their own chrome. The whole bar is a drag region; the
- * buttons opt out with `.no-drag`. Children of a drag region must not receive
- * pointer events, otherwise Tauri's hit test misses them (see `styles.css`).
+ * Frameless windows need their own chrome. The whole bar is a native Tauri drag
+ * region; the buttons opt out with `.no-drag`. The attribute is what makes the
+ * window movable on macOS, where WKWebView ignores `-webkit-app-region`.
+ * Children must not receive pointer events, otherwise Tauri's hit test sees the
+ * child instead of the header (see `styles.css`).
  */
 export function TitleBar({
   trailing,
@@ -49,7 +51,10 @@ export function TitleBar({
 }: TitleBarProps) {
   const t = useT();
   return (
-    <header className="drag-region flex h-12 shrink-0 items-center gap-2.5 px-3.5">
+    <header
+      data-tauri-drag-region="true"
+      className="drag-region flex h-12 shrink-0 items-center gap-2.5 px-3.5"
+    >
       <LeafMark className="h-[19px] w-[19px] text-accent" />
       <h1 className="text-[14.5px] font-medium tracking-[-0.01em] text-fg">
         {t("app.name")}

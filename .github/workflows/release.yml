@@ -91,6 +91,9 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Check bundle icons
+        run: npm run check:icons
+
       - name: Check version consistency
         env:
           TAG: ${{ github.ref_name }}
@@ -184,6 +187,9 @@ jobs:
 
       - name: Install npm dependencies
         run: npm ci
+
+      - name: Check bundle icons
+        run: npm run check:icons
 
       - name: Check version consistency
         env:
